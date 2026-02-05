@@ -7,7 +7,7 @@ export function Hero() {
     <section id="home" className="relative min-h-screen flex items-center pt-16 md:pt-20">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-beauty.jpg"
+          src="/apsara-makeover-website/images/hero-beauty.jpg"
           alt="Best beauty parlour in Madurai - Apsara Makeover salon interior"
           fill
           className="object-cover"

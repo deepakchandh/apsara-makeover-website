@@ -17,7 +17,7 @@ export function About() {
           <div className="relative">
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
               <Image
-                src="/images/about-salon.jpg"
+                src="/apsara-makeover-website/images/about-salon.jpg"
                 alt="Apsara Makeover Madurai - Professional makeup artist services"
                 fill
                 className="object-cover"
