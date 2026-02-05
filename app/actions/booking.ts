@@ -33,7 +33,8 @@ async function sendBookingNotificationEmail(data: BookingData, bookingId: string
   })
 
   try {
-    await resend.emails.send({
+    console.log("[v0] Sending email via Resend...")
+    const result = await resend.emails.send({
       from: "Apsara Makeover Bookings <onboarding@resend.dev>",
       to: NOTIFICATION_EMAIL,
       subject: `New Booking Request - ${data.name} | ${data.service}`,
@@ -111,10 +112,11 @@ async function sendBookingNotificationEmail(data: BookingData, bookingId: string
         </div>
       `,
     })
-    return { success: true }
+    console.log("[v0] Resend API response:", result)
+    return { success: true, data: result }
   } catch (error) {
-    console.error("Failed to send email notification:", error)
-    return { success: false, error }
+    console.error("[v0] Failed to send email notification:", error)
+    return { success: false, error: String(error) }
   }
 }
 
@@ -160,9 +162,11 @@ export async function submitBooking(data: BookingData): Promise<BookingResponse>
 
   // Send email notification
   if (process.env.RESEND_API_KEY) {
-    await sendBookingNotificationEmail(data, bookingId)
+    console.log("[v0] Attempting to send email notification to:", NOTIFICATION_EMAIL)
+    const emailResult = await sendBookingNotificationEmail(data, bookingId)
+    console.log("[v0] Email send result:", emailResult)
   } else {
-    console.warn("RESEND_API_KEY not set - email notification skipped")
+    console.warn("[v0] RESEND_API_KEY not set - email notification skipped")
   }
 
   return {
