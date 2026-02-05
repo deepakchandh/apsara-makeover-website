@@ -89,6 +89,14 @@ export function BookingForm() {
     setMinDate(tomorrow.toISOString().split("T")[0])
   }, [])
 
+  // Check if all mandatory fields are filled
+  const isFormValid = 
+    formData.name.trim() !== "" &&
+    formData.phone.trim() !== "" &&
+    formData.service !== "" &&
+    formData.preferredDate !== "" &&
+    formData.preferredTime !== ""
+
   if (isSuccess) {
     return (
       <div className="bg-card p-8 md:p-10 rounded-lg border border-border text-center">
@@ -280,8 +288,8 @@ export function BookingForm() {
         <Button
           type="submit"
           size="lg"
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-          disabled={isSubmitting}
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={isSubmitting || !isFormValid}
         >
           {isSubmitting ? (
             <>
