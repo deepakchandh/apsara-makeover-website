@@ -288,7 +288,7 @@ export function BookingForm() {
         <Button
           type="submit"
           size="lg"
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed text-lg font-semibold py-6 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
           disabled={isSubmitting || !isFormValid}
         >
           {isSubmitting ? (
@@ -297,7 +297,10 @@ export function BookingForm() {
               Submitting...
             </>
           ) : (
-            "Book Appointment"
+            <>
+              <Calendar className="w-5 h-5 mr-2" />
+              Book My Appointment
+            </>
           )}
         </Button>
 
