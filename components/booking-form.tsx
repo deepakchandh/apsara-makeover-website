@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Calendar, Clock, User, Phone, Mail, MessageSquare, CheckCircle, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -75,15 +75,19 @@ export function BookingForm() {
     setIsSubmitting(false)
   }
 
+  const [minDate, setMinDate] = useState("")
+
   const handleChange = (field: keyof BookingData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
     setError("")
   }
 
-  // Get tomorrow's date as minimum selectable date
-  const tomorrow = new Date()
-  tomorrow.setDate(tomorrow.getDate() + 1)
-  const minDate = tomorrow.toISOString().split("T")[0]
+  // Get tomorrow's date as minimum selectable date (client-side only to avoid hydration mismatch)
+  useEffect(() => {
+    const tomorrow = new Date()
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    setMinDate(tomorrow.toISOString().split("T")[0])
+  }, [])
 
   if (isSuccess) {
     return (
