@@ -5,9 +5,9 @@ export function SchemaMarkup() {
     name: "Apsara Makeover",
     description:
       "Apsara Makeover is one of the best beauty parlours in Madurai, offering professional makeup and beauty services near Kanpalayam.",
-    image: "/images/hero-beauty.jpg",
-    "@id": "https://apsaramakeover.com",
-    url: "https://apsaramakeover.com",
+    image: "https://deepakchandh.github.io/apsara-makeover-website/images/hero-beauty.jpg",
+    "@id": "https://deepakchandh.github.io/apsara-makeover-website",
+    url: "https://deepakchandh.github.io/apsara-makeover-website",
     telephone: "+919865459229",
     priceRange: "$$",
     address: {

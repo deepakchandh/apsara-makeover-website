@@ -1,7 +1,7 @@
 import React from "react"
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
+
 import './globals.css'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     locale: 'en_IN',
   },
   alternates: {
-    canonical: 'https://apsaramakeover.com',
+    canonical: 'https://deepakchandh.github.io/apsara-makeover-website',
   },
   icons: {
     icon: [
@@ -49,7 +49,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
-        <Analytics />
       </body>
     </html>
   )
